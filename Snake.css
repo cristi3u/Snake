@@ -1,0 +1,15 @@
+body {
+    text-align: center;
+}
+
+#score {
+    color: rgb(120, 158, 59);
+    font-weight: bold;
+    font-size: 30px;
+}
+
+#result {
+    color :red;
+    font-weight: bold;
+    font-size: 30px;
+}
