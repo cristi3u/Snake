@@ -109,7 +109,6 @@ function keyDown() {
 		}
 		ySnakeMove = -1;
 		xSnakeMove = 0;
-
 	}
 	if (event.keyCode == 40) {
 		if (ySnakeMove == -1) {
