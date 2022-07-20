@@ -112,7 +112,6 @@ function keyDown() {
 		xSnakeMove = 0;
 
 	}
-
 	if (event.keyCode == 40) {
 		if (ySnakeMove == -1) {
 			return;
@@ -120,7 +119,6 @@ function keyDown() {
 		ySnakeMove = 1;
 		xSnakeMove = 0;
 	}
-
 	if (event.keyCode == 37) {
 		if (xSnakeMove == 1) {
 			return;
@@ -128,7 +126,6 @@ function keyDown() {
 		ySnakeMove = 0;
 		xSnakeMove = -1;
 	}
-
 	if (event.keyCode == 39) {
 		if (xSnakeMove == -1) {
 			return;
@@ -137,5 +134,4 @@ function keyDown() {
 		xSnakeMove = 1;
 	}
 }
-
 startGame();
