@@ -2,14 +2,14 @@ const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 var perfectCoordonate = 20;
 var objectSize = 18;
-var headXCoordonate = 10;
-var headYCoorodonat = 10;
+var headXCoordonate = Math.floor(Math.random() * perfectCoordonate);
+var headYCoordonate = Math.floor(Math.random() * perfectCoordonate);
 const snakeBody = [];
 var bodyLength = 2;
 var xSnakeMove = 0;
 var ySnakeMove = 0;
-var appleXCoordonate = 5;
-var appleYCoordonate = 5
+var appleXCoordonate = Math.floor(Math.random() * perfectCoordonate);
+var appleYCoordonate = Math.floor(Math.random() * perfectCoordonate);
 var score = 0;
 
 class addSnakeBody {
@@ -28,7 +28,7 @@ function startGame() {
 	clearScreen();
 	createSnake();
 	createApple();
-	checkCollision()
+	checkCollision();
 	document.getElementById("score").innerHTML = "You're score is : " + score;
 	setTimeout(startGame, 100);
 }
@@ -42,15 +42,15 @@ function isGameOver() {
 		gameOver = true;
 	} else if (headXCoordonate === perfectCoordonate) {
 		gameOver = true;
-	} else if (headYCoorodonat < 0) {
+	} else if (headYCoordonate < 0) {
 		gameOver = true;
-	} else if (headYCoorodonat === perfectCoordonate) {
+	} else if (headYCoordonate === perfectCoordonate) {
 		gameOver = true;
 	}
 
 	for (var i = 0; i < snakeBody.length; i++) {
 		var part = snakeBody[i];
-		if (part.x === headXCoordonate && part.y === headYCoorodonat) {
+		if (part.x === headXCoordonate && part.y === headYCoordonate) {
 			gameOver = true;
 			break;
 		}
@@ -73,17 +73,17 @@ function createSnake() {
 		var part = snakeBody[i];
 		ctx.fillRect(part.x * perfectCoordonate, part.y * perfectCoordonate, objectSize, objectSize)
 	}
-	snakeBody.push(new addSnakeBody(headXCoordonate, headYCoorodonat));
+	snakeBody.push(new addSnakeBody(headXCoordonate, headYCoordonate));
 	if (snakeBody.length > bodyLength) {
 		snakeBody.shift();
 	}
 	ctx.fillStyle = "pink";
-	ctx.fillRect(headXCoordonate * perfectCoordonate, headYCoorodonat * perfectCoordonate, objectSize, objectSize)
+	ctx.fillRect(headXCoordonate * perfectCoordonate, headYCoordonate * perfectCoordonate, objectSize, objectSize)
 }
 
 function moveTheSnake() {
 	headXCoordonate = headXCoordonate + xSnakeMove;
-	headYCoorodonat = headYCoorodonat + ySnakeMove;
+	headYCoordonate = headYCoordonate + ySnakeMove;
 }
 
 function createApple() {
@@ -92,7 +92,7 @@ function createApple() {
 }
 
 function checkCollision() {
-	if (appleXCoordonate == headXCoordonate && appleYCoordonate == headYCoorodonat) {
+	if (appleXCoordonate == headXCoordonate && appleYCoordonate == headYCoordonate) {
 		appleXCoordonate = Math.floor(Math.random() * perfectCoordonate);
 		appleYCoordonate = Math.floor(Math.random() * perfectCoordonate);
 		++bodyLength;
@@ -110,6 +110,7 @@ function keyDown() {
 		ySnakeMove = -1;
 		xSnakeMove = 0;
 	}
+
 	if (event.keyCode == 40) {
 		if (ySnakeMove == -1) {
 			return;
@@ -117,6 +118,7 @@ function keyDown() {
 		ySnakeMove = 1;
 		xSnakeMove = 0;
 	}
+
 	if (event.keyCode == 37) {
 		if (xSnakeMove == 1) {
 			return;
@@ -124,6 +126,7 @@ function keyDown() {
 		ySnakeMove = 0;
 		xSnakeMove = -1;
 	}
+
 	if (event.keyCode == 39) {
 		if (xSnakeMove == -1) {
 			return;
@@ -132,4 +135,5 @@ function keyDown() {
 		xSnakeMove = 1;
 	}
 }
+
 startGame();
