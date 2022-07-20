@@ -138,4 +138,4 @@ function keyDown() {
 	}
 }
 
-startGame(); 
+startGame();
