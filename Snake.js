@@ -28,7 +28,6 @@ function startGame() {
 	clearScreen();
 	createSnake();
 	createApple();
-
 	checkCollision()
 	document.getElementById("score").innerHTML = "You're score is : " + score;
 	setTimeout(startGame, 100);
