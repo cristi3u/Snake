@@ -1,16 +1,16 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
-var perfectCoordonate = 20;
-var objectSize = 18;
-var headXCoordonate = Math.floor(Math.random() * perfectCoordonate);
-var headYCoordonate = Math.floor(Math.random() * perfectCoordonate);
+let perfectCoordonate = 20;
+let objectSize = 18;
+let headXCoordonate = Math.floor(Math.random() * perfectCoordonate);
+let headYCoordonate = Math.floor(Math.random() * perfectCoordonate);
 const snakeBody = [];
-var bodyLength = 2;
-var xSnakeMove = 0;
-var ySnakeMove = 0;
-var appleXCoordonate = Math.floor(Math.random() * perfectCoordonate);
-var appleYCoordonate = Math.floor(Math.random() * perfectCoordonate);
-var score = 0;
+let bodyLength = 2;
+let xSnakeMove = 0;
+let ySnakeMove = 0;
+let appleXCoordonate = Math.floor(Math.random() * perfectCoordonate);
+let appleYCoordonate = Math.floor(Math.random() * perfectCoordonate);
+let score = 0;
 
 class addSnakeBody {
 	constructor(x, y) {
@@ -21,7 +21,7 @@ class addSnakeBody {
 
 function startGame() {
 	moveTheSnake();
-	var result = isGameOver();
+	let result = isGameOver();
 	if (result == true) {
 		return;
 	}
@@ -34,7 +34,7 @@ function startGame() {
 }
 
 function isGameOver() {
-	var gameOver = false;
+	let gameOver = false;
 	if (xSnakeMove === 0 && ySnakeMove === 0) {
 		return false;
 	}
@@ -48,8 +48,8 @@ function isGameOver() {
 		gameOver = true;
 	}
 
-	for (var i = 0; i < snakeBody.length; i++) {
-		var part = snakeBody[i];
+	for (let i = 0; i < snakeBody.length; i++) {
+		let part = snakeBody[i];
 		if (part.x === headXCoordonate && part.y === headYCoordonate) {
 			gameOver = true;
 			break;
@@ -69,8 +69,8 @@ function clearScreen() {
 
 function createSnake() {
 	ctx.fillStyle = "yellow";
-	for (var i = 0; i < snakeBody.length; i++) {
-		var part = snakeBody[i];
+	for (let i = 0; i < snakeBody.length; i++) {
+		let part = snakeBody[i];
 		ctx.fillRect(part.x * perfectCoordonate, part.y * perfectCoordonate, objectSize, objectSize)
 	}
 	snakeBody.push(new addSnakeBody(headXCoordonate, headYCoordonate));
